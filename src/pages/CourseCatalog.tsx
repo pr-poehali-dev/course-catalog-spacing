@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -78,6 +79,7 @@ const categories = ['Все', 'Физика', 'Математика', 'Иску�
 const levels = ['Все уровни', 'Базовый', 'Средний', 'Продвинутый'];
 
 export default function CourseCatalog() {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [selectedLevel, setSelectedLevel] = useState('Все уровни');
   const [searchQuery, setSearchQuery] = useState('');
@@ -161,6 +163,7 @@ export default function CourseCatalog() {
           <Card 
             key={course.id} 
             className="p-6 bg-white border-slate-200 hover:shadow-lg transition-shadow cursor-pointer group"
+            onClick={() => course.id === 5 && navigate('/course/organic-chemistry')}
           >
             <div className="mb-4">
               <div className="flex items-center justify-between mb-3">
@@ -204,7 +207,13 @@ export default function CourseCatalog() {
               </div>
             </div>
 
-            <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white">
+            <Button 
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (course.id === 5) navigate('/course/organic-chemistry');
+              }}
+            >
               Подробнее
             </Button>
           </Card>

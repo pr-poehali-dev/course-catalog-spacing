@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-do
 import CourseCatalog from "./pages/CourseCatalog";
 import StudentProfile from "./pages/StudentProfile";
 import SpacingSystem from "./pages/SpacingSystem";
+import CoursePage from "./pages/CoursePage";
 import NotFound from "./pages/NotFound";
 import Icon from './components/ui/icon';
 
@@ -78,6 +79,7 @@ const App = () => (
               <Route path="/" element={<CourseCatalog />} />
               <Route path="/profile" element={<StudentProfile />} />
               <Route path="/spacing" element={<SpacingSystem />} />
+              <Route path="/course/organic-chemistry" element={<CoursePage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
